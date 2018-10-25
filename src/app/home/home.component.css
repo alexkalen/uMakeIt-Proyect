@@ -1,0 +1,28 @@
+.card{
+    color: white;
+    background-color: black;
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+}
+
+.titulo-menu{
+    background-color: black;
+    color: white;
+    border-radius: 0 20px 20px 0;
+}
+
+.card-title{
+    font-family: 'Orbitron', sans-serif;
+}
+
+h6{
+font-family: 'Orbitron', sans-serif;
+color: rgb(255, 102, 0);
+}
+
+.home{
+    min-height: 100vh;
+    background: url(/images/BackGround-Sushito.jpg) center center no-repeat;
+    background-size: cover;
+}

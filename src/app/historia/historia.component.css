@@ -1,0 +1,9 @@
+.historia{
+    min-height: 100vh;
+    background: url(/images/BackGround-Sushito.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.tabla{
+    margin-top: 150px;
+}

@@ -1,16 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AdminComponent } from './admin/admin.component';
+import { ModalhomeComponent } from './modalhome/modalhome.component';
+import { OrdenComponent } from './orden/orden.component';
+import { HistoriaComponent } from './historia/historia.component';
+
+
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: '', component: SignInComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'orders', component: OrdenComponent },
+  { path: 'history', component: HistoriaComponent }
+
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    EncabezadoComponent,
+    SignInComponent,
+    AdminComponent,
+    ModalhomeComponent,
+    OrdenComponent,
+    HistoriaComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
+    AngularFontAwesomeModule,
+    RouterModule.forRoot(
+      appRoutes, 
+      { enableTracing: true })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalhomeComponent],
+  exports: [RouterModule],
+  
 })
 export class AppModule { }

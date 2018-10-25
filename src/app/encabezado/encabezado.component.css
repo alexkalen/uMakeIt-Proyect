@@ -1,0 +1,35 @@
+.sushi-icon img{
+    height: 50px;
+    width: 50px;
+}
+
+.chopsticks-icon img{
+    height: 40px;
+    width: 40px;
+}
+
+.button-user {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: black;
+    border: solid;
+    border-color: rgb(255, 102, 0);
+    border-top-color: transparent;
+    
+}
+
+.dropdown-item:hover{
+    color: black;
+}
+
+.dropdown-item{
+    color:white;
+}
+
