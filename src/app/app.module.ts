@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ModalhomeComponent } from './modalhome/modalhome.component';
 import { OrdenComponent } from './orden/orden.component';
 import { HistoriaComponent } from './historia/historia.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'orders', component: OrdenComponent },
-  { path: 'history', component: HistoriaComponent }
+  { path: 'history', component: HistoriaComponent },
+  { path: 'sign-up', component: SignUpComponent }
 
 ];
 
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     AdminComponent,
     ModalhomeComponent,
     OrdenComponent,
-    HistoriaComponent
+    HistoriaComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
