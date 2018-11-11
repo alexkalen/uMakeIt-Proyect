@@ -6,87 +6,23 @@
     </div>
   </div>
 
-  <!-- Cards -->
+  <!-- Cards -->  
 
-<div class="row my-5">
-  <div class="col-4">
+<!-- Estas son las diferentes'cartas del menu' -->
+<!-- Aqui esta en ngFor que imprime todas las cartas de la base de datos de sushirolls-->
+
+<div class="row my-5" >
+  <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls"> 
       <div class="card mx-auto" style="width: 18rem;">
           <img class="card-img-top" src="images/sushi1.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">
-                <a  style="color: white">Guankanmaki</a>
+                <a  style="color: white"> {{sushirolls.name}} </a>
             </h5>  
-            <h6>12$</h6>
-          </div>
-        </div>
-  </div>
-  <div class="col-4">
-      <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top"  src="images/sushi2.jpg" alt="Card image cap">
-          <div class="card-body">
-              <h5 class="card-title">
-                  <a style="color: white">Ikura Gunkan</a>
-                  <!-- <div (click)="openModal()" class="btn btn-success"> Prueba</div> -->
-                </h5>  
-              <h6>12$</h6>
-          </div>
-        </div>
-  </div>
-  <div class="col-4">
-      <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top" src="images/sushi4.jpg" alt="Card image cap">
-          <div class="card-body">
-              <h5 class="card-title">
-                <a href="#" style="color: white">Futomaki</a>
-              </h5>  
-              <h6>12$</h6>
+            <h6>{{sushirolls.price}} $</h6>
           </div>
         </div>
   </div>
 </div>
 
 
-<div class="row  my-5">
-    <div class="col-4">
-        <div class="card mx-auto" style="width: 18rem;">
-            <img class="card-img-top" src="images/sushi5.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><a href="#" style="color: white">Tobiko Nigiri</a></h5>  
-                <h6>12$</h6>
-            </div>
-          </div>
-    </div>
-    <div class="col-4">
-        <div class="card mx-auto" style="width: 18rem;">
-            <img class="card-img-top"  src="images/sushi6.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><a href="#" style="color: white">Nigiri</a></h5> 
-                <h6>12$</h6> 
-            </div>
-          </div>
-    </div>
-    <div class="col-4">
-        <div class="card mx-auto" style="width: 18rem;">
-            <img class="card-img-top" src="images/sushi8.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><a href="#" style="color: white">Anakyiu</a></h5> 
-                <h6>12$</h6> 
-            </div>
-          </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modales Terminar esto -->
-
-<!-- <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    This is a modal.
-  </div>
-
-  </div> -->

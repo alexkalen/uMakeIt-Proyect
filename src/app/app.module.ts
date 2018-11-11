@@ -13,6 +13,12 @@ import { ModalhomeComponent } from './modalhome/modalhome.component';
 import { OrdenComponent } from './orden/orden.component';
 import { HistoriaComponent } from './historia/historia.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { ForgotComponent } from './forgot/forgot.component'
+ 
 
 
 const appRoutes: Routes = [
@@ -22,8 +28,8 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'orders', component: OrdenComponent },
   { path: 'history', component: HistoriaComponent },
-  { path: 'sign-up', component: SignUpComponent }
-
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'forgot-password', component: ForgotComponent },
 ];
 
 @NgModule({
@@ -36,7 +42,8 @@ const appRoutes: Routes = [
     ModalhomeComponent,
     OrdenComponent,
     HistoriaComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,11 @@ const appRoutes: Routes = [
     AngularFontAwesomeModule,
     RouterModule.forRoot(
       appRoutes, 
-      { enableTracing: true })
+      { enableTracing: true }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

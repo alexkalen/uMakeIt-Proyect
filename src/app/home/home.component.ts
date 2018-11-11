@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalhomeComponent } from '../modalhome/modalhome.component'
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { AngularFireDatabase } from 'angularfire2/database'
 
 
 
@@ -12,15 +12,17 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class HomeComponent implements OnInit {
 
-  
+  sushirolls: any[];
 
     modalRef: BsModalRef;
-  constructor(private modalService: BsModalService) {}
-
-  openModal(){
-    this.modalRef = this.modalService.show(ModalhomeComponent);
-
-  }
+    
+    constructor(db: AngularFireDatabase) { 
+    
+      db.list('/sushirolls').valueChanges().subscribe(sushirolls => {
+        this.sushirolls = sushirolls;
+        console.log(this.sushirolls);
+      })
+    }
   
 
   ngOnInit() {
