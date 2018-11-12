@@ -9,7 +9,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminComponent } from './admin/admin.component';
-import { ModalhomeComponent } from './modalhome/modalhome.component';
 import { OrdenComponent } from './orden/orden.component';
 import { HistoriaComponent } from './historia/historia.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -21,8 +20,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { SushirollsComponent } from './sushirolls/sushirolls.component'
 import { SushirollsService } from './sushirolls.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
-
+import { Observable } from 'rxjs';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -42,12 +40,12 @@ const appRoutes: Routes = [
     EncabezadoComponent,
     SignInComponent,
     AdminComponent,
-    ModalhomeComponent,
     OrdenComponent,
     HistoriaComponent,
     SignUpComponent,
     ForgotComponent,
-    SushirollsComponent
+    SushirollsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -60,16 +58,14 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
-
-
+    AngularFirestoreModule,
   ],
   providers: [
     SushirollsService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalhomeComponent],
-  exports: [RouterModule],
+  entryComponents: [HomeComponent],
+  exports: [RouterModule,],
 
 })
 export class AppModule { }

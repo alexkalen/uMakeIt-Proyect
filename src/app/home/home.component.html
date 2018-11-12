@@ -11,18 +11,39 @@
 <!-- Estas son las diferentes'cartas del menu' -->
 <!-- Aqui esta en ngFor que imprime todas las cartas de la base de datos de sushirolls-->
 
+
 <div class="row my-5" >
   <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls"> 
       <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top" src="images/sushi1.jpg" alt="Card image cap">
+          <img class="card-img-top"  (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">
-                <a  style="color: white"> {{sushirolls.name}} </a>
+                <a style="color: white" > {{sushirolls.name}} </a>
             </h5>  
             <h6>{{sushirolls.price}} $</h6>
           </div>
         </div>
+
+        <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title mx-auto">Sushitogo</h4>
+              <div class="card mx-auto" style="width: 18rem;">
+                  <img class="card-img-top"  (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                        <a style="color: white" > {{sushirolls.name}} </a>
+                    </h5>  
+                    <h6>{{sushirolls.price}} $</h6>
+                  </div>
+                </div>
+            </div>
+            
+          </ng-template>
+          
+
+
   </div>
 </div>
+
 
 
