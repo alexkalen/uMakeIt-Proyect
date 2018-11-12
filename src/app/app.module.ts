@@ -17,8 +17,11 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { ForgotComponent } from './forgot/forgot.component'
- 
+import { ForgotComponent } from './forgot/forgot.component';
+import { SushirollsComponent } from './sushirolls/sushirolls.component'
+import { SushirollsService } from './sushirolls.service';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 
 
 const appRoutes: Routes = [
@@ -43,7 +46,8 @@ const appRoutes: Routes = [
     OrdenComponent,
     HistoriaComponent,
     SignUpComponent,
-    ForgotComponent
+    ForgotComponent,
+    SushirollsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,17 +55,21 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     AngularFontAwesomeModule,
     RouterModule.forRoot(
-      appRoutes, 
+      appRoutes,
       { enableTracing: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
+
 
   ],
-  providers: [],
+  providers: [
+    SushirollsService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModalhomeComponent],
   exports: [RouterModule],
-  
+
 })
 export class AppModule { }

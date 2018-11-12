@@ -3,3 +3,7 @@
     background: url(/images/BackGround-Sushito.jpg) center center no-repeat;
     background-size: cover;
 }
+
+label{
+    color: rgb(255, 115, 0);
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalhomeComponent } from '../modalhome/modalhome.component'
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { AngularFireDatabase } from 'angularfire2/database'
-
+import {SushirollsService} from '../sushirolls.service';
+import { Item } from '../models/item';
 
 
 @Component({
@@ -12,20 +12,18 @@ import { AngularFireDatabase } from 'angularfire2/database'
 })
 export class HomeComponent implements OnInit {
 
-  sushirolls: any[];
+   sushirolls: Item[];
 
     modalRef: BsModalRef;
     
-    constructor(db: AngularFireDatabase) { 
-    
-      db.list('/sushirolls').valueChanges().subscribe(sushirolls => {
-        this.sushirolls = sushirolls;
-        console.log(this.sushirolls);
-      })
+    constructor(public sushirollsService: SushirollsService) { 
     }
-  
 
   ngOnInit() {
+
+    this.sushirollsService.getSushirolls().subscribe(sushirolls => {
+      this.sushirolls = sushirolls;
+    })
 
   }
 
