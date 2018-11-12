@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database'
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {SushirollsService} from '../sushirolls.service';
+import { Item } from '../models/item';
 
+// ¿Que esta pasando aqui?
+// Estamos inyectando un servicio para poder iterar nuestros diferentes 'sushirolls'
 
 @Component({
   selector: 'app-admin',
@@ -9,17 +13,19 @@ import { AngularFireDatabase } from 'angularfire2/database'
 })
 export class AdminComponent implements OnInit {
 
-  sushirolls: any[];
+  sushirolls: Item[];
 
-  constructor(db: AngularFireDatabase) { 
-    
-    db.list('/sushirolls').valueChanges().subscribe(sushirolls => {
-      this.sushirolls = sushirolls;
-      console.log(this.sushirolls);
-    })
+  modalRef: BsModalRef;
+  
+  constructor(public sushirollsService: SushirollsService) { 
   }
 
-  ngOnInit() {
-  }
+ngOnInit() {
+
+  this.sushirollsService.getSushirolls().subscribe(sushirolls => {
+    this.sushirolls = sushirolls;
+  })
+
+}
 
 }

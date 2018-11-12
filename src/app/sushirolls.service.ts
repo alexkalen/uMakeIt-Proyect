@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Item } from './models/item';
 import { Observable } from 'rxjs/Observable';
 
-//Este es el servicio para inyector los sushirolls
+//Este es el servicio para inyector los sushirolls 
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,11 @@ export class SushirollsService {
 
 
   constructor(public afs: AngularFirestore) { 
-
     this.sushirolls = this.afs.collection('sushirolls').valueChanges();
   }
 
   getSushirolls(){
-
     return this.sushirolls;
   }
-  
-
 }
  
