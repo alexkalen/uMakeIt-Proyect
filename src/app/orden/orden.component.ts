@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-orden',
   templateUrl: './orden.component.html',
   styleUrls: ['./orden.component.css']
 })
-export class OrdenComponent implements OnInit {
+export class OrdenComponent implements OnInit{
 
-  constructor() { }
+  public cart = [];
+  
 
-  ngOnInit() {
+  
+
+  constructor(private data: CartService ) { 
+
+    
   }
 
+  ngOnInit() {
+
+    this.data.currentCart.subscribe(cart => this.cart = cart)
+    
+  }
 }
+
+
