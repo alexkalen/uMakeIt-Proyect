@@ -17,9 +17,11 @@ import { MenuComponent } from '../modals/menu/menu.component';
 })
 export class HomeComponent implements OnInit {
 
-   sushirolls: Item[];
+    sushirolls: Item[];
 
     modalRef: BsModalRef;
+
+    searchTerm: string;
     
     constructor(public sushirollsService: SushirollsService, private modalService: BsModalService) { 
     }

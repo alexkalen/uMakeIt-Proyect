@@ -1,4 +1,10 @@
 <div class="admin">
+    <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" 
+            style="width:300px" [(ngModel)]="searchTerm" />
+
+    </div>
+    
     <div class="row">
         <div class="col-8 mx-auto" style="margin-top: 70px;">
             <div class="col-12">
@@ -12,7 +18,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let sushirolls of sushirolls">
+                            
+                        <tr *ngFor="let sushirolls of sushirolls | sushirollFilter:searchTerm">
                             
                             <td>{{sushirolls.name}}</td>
                             <td>{{sushirolls.price}}</td>
