@@ -1,10 +1,15 @@
 <div class="home">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" 
-        style="width:300px" [(ngModel)]="searchTerm" />
-
-</div>
+    
 <div class="menu-home">
+  <div class="row">
+    <div class="col-4 ">
+        <div class="form-group searchbar">
+            <input type="text" class="form-control danger" placeholder="Search" 
+            style="width:300px" [(ngModel)]="searchTerm" />
+        </div>
+    </div>
+      
+  </div>
   <div class="row">
     <div class="col-12 mx-auto">
       <h1 class="pl-5 mt-5 titulo-menu p-2 text-center"  >Menú</h1>

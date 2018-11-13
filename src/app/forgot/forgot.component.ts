@@ -10,6 +10,11 @@ export class ForgotComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  selectedemail(email){
+    alert("Email sent! Check inbox")
   }
 
 }
