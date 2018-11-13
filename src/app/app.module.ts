@@ -23,6 +23,7 @@ import { SushirollsService } from './sushirolls.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AdminFilterPipe } from './admin/admin-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { HomeFilterPipe } from './home/home-filter.pipe';
 
 
 
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     SignUpComponent,
     ForgotComponent,
     SushirollsComponent,
-    AdminFilterPipe
+    AdminFilterPipe,
+    HomeFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,11 @@ import { Item } from '../models/item';
 })
 export class HomeComponent implements OnInit {
 
-   sushirolls: Item[];
+    sushirolls: Item[];
 
     modalRef: BsModalRef;
+
+    searchTerm: string;
     
     constructor(public sushirollsService: SushirollsService) { 
     }
