@@ -1,8 +1,8 @@
 <div class="home">
 <div class="menu-home">
   <div class="row">
-    <div class="col-6">
-      <h1 class="pl-5 mt-5 text-light titulo-menu" >Menú</h1>
+    <div class="col-12 mx-auto">
+      <h1 class="pl-5 mt-5 titulo-menu p-2 text-center"  >Menú</h1>
     </div>
   </div>
 
@@ -21,26 +21,37 @@
                 <a style="color: white" > {{sushirolls.name}} </a>
             </h5>  
             <h6>{{sushirolls.price}} $</h6>
-          </div>
-        </div>
+           </div>
+      </div>
+
+        <!-- Este es el modal -->
 
         <ng-template #template>
-            <div class="modal-header">
-              <h4 class="modal-title mx-auto">Sushitogo</h4>
-              <div class="card mx-auto" style="width: 18rem;">
-                  <img class="card-img-top"  (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">
-                        <a style="color: white" > {{sushirolls.name}} </a>
-                    </h5>  
-                    <h6>{{sushirolls.price}} $</h6>
-                  </div>
-                </div>
+            <div class="modal-header ">
+                <h4 class="modal-title mx-auto">{{sushirolls.name}}</h4>   
             </div>
-            
-          </ng-template>
           
+            <div class="row m-3">
+              <div class="col-8">
+                  <div class="mx-auto sushi-modal" style="max-width: 18rem;">
+                      <img  src="{{sushirolls.image}}" >
+                  </div>
+                  <div class="mt-2 text-center">
+                    <p>
+                      {{sushirolls.description}}
+                    </p>
+                  </div>
+              </div>
+              <div class="col-4">
+                  
+              </div>
+          </div>
+          <div class="modal-footer" style="background-color: rgb(255, 123, 0)">
+            
+          </div>
+        </ng-template>
 
+        <!-- Aqui termina el modal -->
 
   </div>
 </div>
