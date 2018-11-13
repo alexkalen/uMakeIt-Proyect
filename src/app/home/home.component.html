@@ -6,8 +6,8 @@
 </div>
 <div class="menu-home">
   <div class="row">
-    <div class="col-6">
-      <h1 class="pl-5 mt-5 text-light titulo-menu" >Menú</h1>
+    <div class="col-12 mx-auto">
+      <h1 class="pl-5 mt-5 titulo-menu p-2 text-center"  >Menú</h1>
     </div>
   </div>
 
@@ -16,19 +16,51 @@
 <!-- Estas son las diferentes'cartas del menu' -->
 <!-- Aqui esta en ngFor que imprime todas las cartas de la base de datos de sushirolls-->
 
+
 <div class="row my-5" >
   
   <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls | sushirollFilter:searchTerm"> 
       <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top" src="images/sushi1.jpg" alt="Card image cap">
+          <img class="card-img-top"  (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">
-                <a  style="color: white"> {{sushirolls.name}} </a>
+                <a style="color: white" > {{sushirolls.name}} </a>
             </h5>  
             <h6>{{sushirolls.price}} $</h6>
+           </div>
+      </div>
+
+        <!-- Este es el modal -->
+
+        <ng-template #template>
+            <div class="modal-header ">
+                <h4 class="modal-title mx-auto">{{sushirolls.name}}</h4>   
+            </div>
+          
+            <div class="row m-3">
+              <div class="col-8">
+                  <div class="mx-auto sushi-modal" style="max-width: 18rem;">
+                      <img  src="{{sushirolls.image}}" >
+                  </div>
+                  <div class="mt-2 text-center">
+                    <p>
+                      {{sushirolls.description}}
+                    </p>
+                  </div>
+              </div>
+              <div class="col-4">
+                  
+              </div>
           </div>
-        </div>
+          <div class="modal-footer" style="background-color: rgb(255, 123, 0)">
+            
+          </div>
+        </ng-template>
+
+        <!-- Aqui termina el modal -->
+
   </div>
 </div>
+
 
 
