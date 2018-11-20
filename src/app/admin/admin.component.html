@@ -1,9 +1,5 @@
 <div class="admin">
-    <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" 
-            style="width:300px" [(ngModel)]="searchTerm" />
-
-    </div>
+  
     
     <div class="row">
         <div class="col-8 mx-auto" style="margin-top: 70px;">
@@ -56,6 +52,16 @@
                                         <label>Choose Image</label>
                                         <input type="file" class="form-control-file" style="color:white">
                                 </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">
+                                      <i class="fas fa-plus-circle"></i> Agregar
+                                    </button>
+                                    <button class="btn btn-secondary" type="reset" (click)="resetForm(itemForm)"> 
+                                      <i class="fas fa-sync-alt"></i> Borrar
+                          
+                                    </button>
+                                  </div>
+                          
                         </form>
                 </div>  
             </div>
