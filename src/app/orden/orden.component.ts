@@ -9,17 +9,12 @@ import { CartService } from '../cart.service';
 export class OrdenComponent implements OnInit{
 
   public cart = [];
-  
-
-  
 
   constructor(private data: CartService ) { 
-
     
   }
 
   ngOnInit() {
-
     this.data.currentCart.subscribe(cart => this.cart = cart)
     
   }

@@ -24,6 +24,7 @@ import { AdminFilterPipe } from './admin/admin-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HomeFilterPipe } from './home/home-filter.pipe';
 import { CartService } from './cart.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     SushirollsComponent,
     AdminFilterPipe,
     HomeFilterPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
