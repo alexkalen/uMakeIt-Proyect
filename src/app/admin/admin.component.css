@@ -7,3 +7,10 @@
 label{
     color: rgb(255, 115, 0);
 }
+
+.searchbar{
+    margin-top: 40px;
+    margin-left: 70px;
+    border: solid;
+    border: black;
+}

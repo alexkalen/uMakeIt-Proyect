@@ -23,9 +23,15 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AdminFilterPipe } from './admin/admin-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HomeFilterPipe } from './home/home-filter.pipe';
+import { CartService } from './cart.service';
+import { FooterComponent } from './footer/footer.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 import { Observable } from 'rxjs';
+import { ItemComponent } from './item/item/item.component';
+import { ItemListComponent } from './item/item-list/item-list.component';
+import { ItemService } from './item.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -51,7 +57,10 @@ const appRoutes: Routes = [
     ForgotComponent,
     SushirollsComponent,
     AdminFilterPipe,
-    HomeFilterPipe
+    HomeFilterPipe,
+    FooterComponent,
+    ItemComponent,
+    ItemListComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,12 +74,15 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
+    AngularFireAuthModule, 
     FormsModule
 
 
   ],
   providers: [
-    SushirollsService
+    SushirollsService, 
+    CartService,
+    ItemService
   ],
   bootstrap: [AppComponent],
   entryComponents: [HomeComponent],

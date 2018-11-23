@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {SushirollsService} from '../sushirolls.service';
+//import {SushirollsService} from '../sushirolls.service';
 import { Item } from '../models/item';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-// ¿Que esta pasando aqui?
-// Estamos inyectando un servicio para poder iterar nuestros diferentes 'sushirolls'
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-admin',
@@ -21,17 +19,15 @@ export class AdminComponent implements OnInit {
 
   searchTerm: string;
   
-  constructor(public sushirollsService: SushirollsService) { 
-  }
+  constructor(public itemsService: ItemService) { }
 
 ngOnInit() {
 
-  this.sushirollsService.getSushirolls().subscribe(sushirolls => {
-    this.sushirolls = sushirolls;
+  this.itemsService.getSushirolls().subscribe(sushirolls => {
+  this.sushirolls = sushirolls;
   })
 
 }
 
 
-}
 }

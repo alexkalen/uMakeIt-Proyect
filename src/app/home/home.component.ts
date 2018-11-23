@@ -1,9 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {SushirollsService} from '../sushirolls.service';
 import { Item } from '../models/item';
+import { CartService } from '../cart.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { MenuComponent } from '../modals/menu/menu.component';
+
 
 
 // ¿Que esta pasando aqui?
@@ -18,12 +19,11 @@ import { MenuComponent } from '../modals/menu/menu.component';
 export class HomeComponent implements OnInit {
 
     sushirolls: Item[];
-
     modalRef: BsModalRef;
-
     searchTerm: string;
+    public cart = [];
     
-    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService) { 
+    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService, private data: CartService) { 
     }
 
   ngOnInit() {
@@ -31,10 +31,16 @@ export class HomeComponent implements OnInit {
     this.sushirollsService.getSushirolls().subscribe(sushirolls => {
       this.sushirolls = sushirolls;
     })
+    this.data.currentCart.subscribe(cart => this.cart = cart)
   }
 
   openModal(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template);
+  }
+
+  selectedSushi(sushirolls){
+    alert( sushirolls.name + " Added to cart!")
+    this.cart.push(sushirolls.name);
   }
 }
 
