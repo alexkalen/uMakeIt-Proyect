@@ -47,7 +47,6 @@ insertItem(item: Item){
 //REVISAR SI FUNCIONA CON ID O $KEY
 //Actualizar item o editar
 /*
-
 updateItem(item: Item){
 
   this.itemsCollection.update(item.id, {
