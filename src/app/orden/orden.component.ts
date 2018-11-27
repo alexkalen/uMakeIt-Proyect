@@ -94,7 +94,7 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
       this.router.navigate(['']);
     }
   }
-}
+
 
 
   openModal(template: TemplateRef<any>){

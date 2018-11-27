@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.cart.push(order);
     this.cartService.addOrder(order);
     console.log(this.cart);
+    this.modalRef.hide();
   }
 
   authenticate() {
