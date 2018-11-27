@@ -11,7 +11,7 @@
                               <th scope="col">Appetizer</th>
                               <th scope="col">Beverage</th>
                               <th scope="col">Price</th>
-                      
+                              <th scope="col"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -21,6 +21,7 @@
                               <th scope="row">{{order.appetizer}}</th>
                               <th scope="row">{{order.beverage}}</th>
                               <th scope="row">${{order.price}}</th>
+                              <th scope="row"><i (click)="deleteOrder(order)" class="fas fa-trash"></i></th>
                             </tr>
                           </tbody>
                         </table>

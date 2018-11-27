@@ -5,13 +5,13 @@
     <div class="col-4 ">
         <div class="form-group searchbar">
             <input type="text" class="form-control" placeholder="Search" 
-            style="width:300px " [(ngModel)]="searchTerm" />
+            style="width:300px" [(ngModel)]="searchTerm" />
         </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12 mx-auto">
-      <h1 class="pl-5 mt-5 titulo-menu p-2 text-center"  >Menú</h1>
+      <h1 class="pl-5 mt-5 titulo-menu p-2 text-center">Menú</h1>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
   
   <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls | sushirollFilter:searchTerm"> 
       <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top"  (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
+          <img class="card-img-top" (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">
                 <a style="color: white" > {{sushirolls.name}} </a>
