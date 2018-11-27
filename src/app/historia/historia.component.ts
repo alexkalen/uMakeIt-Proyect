@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historia',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoriaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+  authenticate() {
+    if (localStorage.getItem('isAuthenticated') === 'true')
+      return true;
+    else {
+      this.router.navigate(['']);
+    }
   }
 
 }

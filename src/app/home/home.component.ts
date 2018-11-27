@@ -4,6 +4,8 @@ import { SushirollsService } from '../sushirolls.service';
 import { Item } from '../models/item';
 import { CartService } from '../cart.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+    user;
     public cart = [];
     sushirolls: Item[];
     appetizer: string;
@@ -19,7 +21,8 @@ export class HomeComponent implements OnInit {
     modalRef: BsModalRef;
     searchTerm: string;
     
-    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService, private cartService: CartService) { 
+    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService, private cartService: CartService, public afAuth: AngularFireAuth, public router: Router) {
+      this.user = afAuth.user;
     }
 
   ngOnInit() {
@@ -44,6 +47,14 @@ export class HomeComponent implements OnInit {
     this.cart.push(order);
     this.cartService.addOrder(order);
     console.log(this.cart);
+  }
+
+  authenticate() {
+    if (localStorage.getItem('isAuthenticated') === 'true')
+      return true;
+    else {
+      this.router.navigate(['']);
+    }
   }
 }
 
