@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.sushirollsService.getSushirolls().subscribe(sushirolls => {
       this.sushirolls = sushirolls;
     });
-    this.cartService.currentCart.subscribe(cart => this.cart = cart);
+    // this.cartService.currentCart.subscribe(cart => this.cart = cart);
   }
 
   openModal(template: TemplateRef<any>){

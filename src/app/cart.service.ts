@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs';
 import { Order } from '../app/models/order';
+import { History } from '../app/models/history';
 import { map } from 'rxjs/operators'; 
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -16,11 +17,12 @@ export class CartService {
   cart = [];
   db = firebase.firestore();
   orders: Observable<Order[]>;
+  histories: Observable<History[]>;
   ordersCollection: AngularFirestoreCollection<Order>;
   orderDoc: AngularFirestoreDocument<Order>;
 
-  public CartItem = new BehaviorSubject <[]>([]);
-  currentCart = this.CartItem.asObservable();
+  // public CartItem = new BehaviorSubject <[]>([]);
+  // currentCart = this.CartItem.asObservable();
 
   constructor(public afs: AngularFirestore) { 
 
@@ -36,7 +38,16 @@ export class CartService {
   }
 
   getOrders(uid) {
-    this.orders = this.afs.collection('orders', ref => ref.where('user', '==', uid)).valueChanges();
+    this.orders = this.afs.collection('orders', ref => ref
+      .where('user', '==', uid)
+      .where('pagado', '==', false))
+      .snapshotChanges().pipe(map(changes => {
+        return changes.map(a => {
+          const data = a.payload.doc.data() as Order;
+          data.id = a.payload.doc.id;
+          return data;
+        });
+      }));
     return this.orders;
   }
 
@@ -46,7 +57,9 @@ export class CartService {
       main: order.main,
       appetizer: order.appetizer,
       beverage: order.beverage,
-      price: order.price
+      price: order.price,
+      pagado: false,
+      fecha: new Date()
     });
   }
 
@@ -55,8 +68,36 @@ export class CartService {
     this.orderDoc.delete();
   }
 
-  // addCart(cart){
-  //   console.log("Se llamo la funcion addCart() dentro del servicio de cart.")
-  //   this.CartItem.next(cart)
-  // }
+  payOrders(array, totalPrice) {
+    array.map(order => {
+      this.afs.doc(`orders/${order}`).set({
+        pagado: true
+      },
+      {
+        merge: true
+      });
+    });
+
+    let today = new Date();
+
+    this.db.collection('histories').doc().set({
+      orders: array,
+      totalPrice,
+      date: `${today.getDate()} / ${today.getMonth() + 1} / ${today.getFullYear()}`,
+      user: localStorage.getItem('uid')
+    });
+  }
+
+  getHistories() {
+    this.histories = this.afs.collection('histories', ref => ref
+      .where('user', '==', localStorage.getItem('uid')))
+      .snapshotChanges().pipe(map(changes => {
+        return changes.map(a => {
+          const data = a.payload.doc.data() as History;
+          data.id = a.payload.doc.id;
+          return data;
+        });
+      }));
+    return this.histories;
+  }
 }

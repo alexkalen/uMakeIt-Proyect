@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-historia',
@@ -8,9 +9,18 @@ import { Router } from '@angular/router';
 })
 export class HistoriaComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  historys = [];
+
+  constructor(public router: Router, public cartService: CartService) { }
 
   ngOnInit() {
+    this.cartService.getHistories().subscribe(historys => {
+      this.historys = historys;
+      this.historys.map(history => {
+        history.quantity = history.orders.length;
+      });
+      console.log(this.historys);
+    });
   }
 
   authenticate() {

@@ -11,4 +11,5 @@
 .fas.fa-trash:hover {
     transform: scale(1.08) !important;
     color: orange;
+    cursor: pointer;
 }

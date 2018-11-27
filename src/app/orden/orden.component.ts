@@ -17,6 +17,9 @@ declare let paypal: any;
 
 export class OrdenComponent implements OnInit, AfterViewChecked{
   
+  public orders = [];
+  total: number = 0;
+  modalRef: BsModalRef;
   addScript: boolean = false;
   paypalLoad: boolean = true;
   
@@ -63,11 +66,6 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
       document.body.appendChild(scripttagElement);
     })
   }
-  
-
-  public orders = [];
-  total : number = 0;
-  modalRef: BsModalRef;
 
 
   constructor(private cartService: CartService, private modalService: BsModalService, public router: Router) { 
@@ -95,12 +93,17 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
     }
   }
 
-  openModal(template: TemplateRef<any>){
+  pagar(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template);
 
     for (let i=0; i<this.orders.length; i++){
       this.total = this.total + this.orders[i].price;
     }
+
+    let idArray = this.orders.map(order => order.id);
+    this.orders = [];
+
+    this.cartService.payOrders(idArray, this.total);
   }
 }
 
