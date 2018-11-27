@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, Input} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {SushirollsService} from '../sushirolls.service';
+import { SushirollsService } from '../sushirolls.service';
 import { Item } from '../models/item';
 import { CartService } from '../cart.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -18,20 +18,21 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class HomeComponent implements OnInit {
 
+    public cart = [];
     sushirolls: Item[];
+    appetizer: string;
+    beverage: string;
     modalRef: BsModalRef;
     searchTerm: string;
-    public cart = [];
     
-    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService, private data: CartService) { 
+    constructor(public sushirollsService: SushirollsService, private modalService: BsModalService, private cartService: CartService) { 
     }
 
   ngOnInit() {
-
     this.sushirollsService.getSushirolls().subscribe(sushirolls => {
       this.sushirolls = sushirolls;
-    })
-    this.data.currentCart.subscribe(cart => this.cart = cart)
+    });
+    this.cartService.currentCart.subscribe(cart => this.cart = cart);
   }
 
   openModal(template: TemplateRef<any>){
@@ -39,8 +40,16 @@ export class HomeComponent implements OnInit {
   }
 
   selectedSushi(sushirolls){
-    alert( sushirolls.name + " Added to cart!")
-    this.cart.push(sushirolls.name);
+    let order = {
+      main: sushirolls.name,
+      price: sushirolls.price,
+      appetizer: this.appetizer,
+      beverage: this.beverage
+    };
+
+    this.cart.push(order);
+    this.cartService.addOrder(order);
+    console.log(this.cart);
   }
 }
 

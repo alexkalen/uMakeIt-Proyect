@@ -17,7 +17,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { ForgotComponent } from './forgot/forgot.component';
-import { SushirollsComponent } from './sushirolls/sushirolls.component'
 import { SushirollsService } from './sushirolls.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AdminFilterPipe } from './admin/admin-filter.pipe';
@@ -55,7 +54,6 @@ const appRoutes: Routes = [
     HistoriaComponent,
     SignUpComponent,
     ForgotComponent,
-    SushirollsComponent,
     AdminFilterPipe,
     HomeFilterPipe,
     FooterComponent,

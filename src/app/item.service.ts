@@ -36,7 +36,6 @@ export class ItemService {
 
 //Agregar item a la lista
 insertItem(item: Item){
-
     this.db.collection("sushirolls").doc().set({
     description: item.description,
     image: item.image,
@@ -44,6 +43,7 @@ insertItem(item: Item){
     price: item.price,
   })
 }
+
 //REVISAR SI FUNCIONA CON ID O $KEY
 //Actualizar item o editar
 /*updateItem(item: Item){

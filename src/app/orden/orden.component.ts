@@ -8,15 +8,23 @@ import { CartService } from '../cart.service';
 })
 export class OrdenComponent implements OnInit{
 
-  public cart = [];
+  public orders = [];
 
-  constructor(private data: CartService ) { 
+  constructor(private cartService: CartService) { 
     
   }
 
   ngOnInit() {
-    this.data.currentCart.subscribe(cart => this.cart = cart)
+    this.cartService.getOrders().subscribe(orders => {
+      this.orders = orders;
+    });
+
+
+    // this.cartService.currentCart.subscribe(cart => {
+    //   this.orders = cart;
+    // });
     
+    console.log(this.orders);
   }
 }
 

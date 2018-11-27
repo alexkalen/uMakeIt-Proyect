@@ -7,15 +7,20 @@
                           <thead>
                             <tr>
                               <th scope="col">#</th>
-                              <th scope="col">Orders</th>
+                              <th scope="col">Main</th>
+                              <th scope="col">Appetizer</th>
+                              <th scope="col">Beverage</th>
+                              <th scope="col">Price</th>
                       
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row"></th>
-                              <td >{{cart}}</td>
-                              
+                            <tr *ngFor="let order of orders; let i=index">
+                              <th scope="row">{{i}}</th>
+                              <th scope="row">{{order.main}}</th>
+                              <th scope="row">{{order.appetizer}}</th>
+                              <th scope="row">{{order.beverage}}</th>
+                              <th scope="row">${{order.price}}</th>
                             </tr>
                           </tbody>
                         </table>
