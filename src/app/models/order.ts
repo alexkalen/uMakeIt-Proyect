@@ -3,6 +3,6 @@ export class Order {
     appetizer?: string;
     beverage?: string;
     price?: number;
-    $key?:any;
+    id?:string;
   }
   

@@ -13,7 +13,7 @@ export class ForgotComponent implements OnInit {
     
   }
 
-  selectedemail(email){
+  selectedemail(){
     alert("Email sent! Check inbox")
   }
 

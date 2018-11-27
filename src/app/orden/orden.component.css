@@ -1,9 +1,14 @@
 .orden{
     min-height: 100vh;
-    background: url(/images/BackGround-Sushito.jpg) center center no-repeat;
+    background: url(../../assets/BackGround-Sushito.jpg) center center no-repeat;
     background-size: cover;
 }
 
 .tabla{
     margin-top: 150px;
+}
+
+.fas.fa-trash:hover {
+    transform: scale(1.08) !important;
+    color: orange;
 }

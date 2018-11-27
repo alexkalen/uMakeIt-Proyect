@@ -1,4 +1,5 @@
 <div class="orden">
+<<<<<<< HEAD
 
         <div class="row">
                 <div class="col-8 mx-auto">
@@ -53,4 +54,34 @@
                 </div>
               </div>
 
+=======
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="col-12">
+        <table class="table table-striped table-dark tabla text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Main</th>
+              <th scope="col">Appetizer</th>
+              <th scope="col">Beverage</th>
+              <th scope="col">Price</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let i=index">
+              <th scope="row">{{i}}</th>
+              <th scope="row">{{order.main}}</th>
+              <th scope="row">{{order.appetizer}}</th>
+              <th scope="row">{{order.beverage}}</th>
+              <th scope="row">${{order.price}}</th>
+              <th scope="row"><i (click)="deleteOrder(order)" class="fas fa-trash"></i></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+>>>>>>> 8944da92b1772a6d88dab1df5430fedaf73d34bc
 </div>

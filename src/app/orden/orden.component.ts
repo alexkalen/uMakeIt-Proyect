@@ -75,14 +75,12 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
   ngOnInit() {
     this.cartService.getOrders().subscribe(orders => {
       this.orders = orders;
+      console.log(this.orders);
     });
+  }
 
-
-    // this.cartService.currentCart.subscribe(cart => {
-    //   this.orders = cart;
-    // });
-    
-    console.log(this.orders);
+  deleteOrder(order) {
+    this.cartService.deleteOrder(order);
   }
 
   openModal(template: TemplateRef<any>){

@@ -6,13 +6,13 @@
                     
                     <th scope="col">Sushi Roll</th>
                     <th scope="col">Price</th>
-                    <th scope="col"> Description </th>
-                    <th scope="col"> Image </th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Image </th>
                 </tr>
             </thead>
             <tbody>
                     
-                <tr *ngFor="let items of items | sushirollFilter:searchTerm">
+                <tr *ngFor="let item of items | sushirollFilter: searchTerm">
                     
                     <td>{{items.name}}</td>
                     <td>{{items.price}}</td>
