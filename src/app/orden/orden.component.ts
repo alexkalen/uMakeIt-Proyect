@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, TemplateRef, AfterViewChecked } from '@angular/core';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -68,7 +69,9 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
   total : number = 0;
   modalRef: BsModalRef;
 
-  constructor(private cartService: CartService, private modalService: BsModalService) { 
+
+  constructor(private cartService: CartService, private modalService: BsModalService, public router: Router) { 
+
     
   }
 
@@ -82,6 +85,17 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
   deleteOrder(order) {
     this.cartService.deleteOrder(order);
   }
+
+
+  authenticate() {
+    if (localStorage.getItem('isAuthenticated') === 'true')
+      return true;
+    else {
+      this.router.navigate(['']);
+    }
+  }
+}
+
 
   openModal(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template);

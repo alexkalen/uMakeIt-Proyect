@@ -5,6 +5,7 @@ import { Item } from '../models/item';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ItemService } from '../item.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -19,15 +20,21 @@ export class AdminComponent implements OnInit {
 
   searchTerm: string;
   
-  constructor(public itemsService: ItemService) { }
+  constructor(public itemsService: ItemService, public router: Router) { }
 
 ngOnInit() {
-
   this.itemsService.getSushirolls().subscribe(sushirolls => {
   this.sushirolls = sushirolls;
   })
-
 }
+
+  authenticate() {
+    if (localStorage.getItem('isAuthenticated') === 'true')
+      return true;
+    else {
+      this.router.navigate(['']);
+    }
+  }
 
 
 }

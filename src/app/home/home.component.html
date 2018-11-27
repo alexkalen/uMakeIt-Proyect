@@ -1,100 +1,102 @@
-<div class="home">
-    
-<div class="menu-home">
-  <div class="row">
-    <div class="col-4 ">
-        <div class="form-group searchbar">
-            <input type="text" class="form-control" placeholder="Search" 
-            style="width:300px" [(ngModel)]="searchTerm" />
-        </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 mx-auto">
-      <h1 class="pl-5 mt-5 titulo-menu p-2 text-center">Menú</h1>
-    </div>
-  </div>
-
-  <!-- Cards -->  
-
-<!-- Estas son las diferentes'cartas del menu' -->
-<!-- Aqui esta en ngFor que imprime todas las cartas de la base de datos de sushirolls-->
-
-
-<div class="row my-5" >
-  
-  <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls | sushirollFilter:searchTerm"> 
-      <div class="card mx-auto" style="width: 18rem;">
-          <img class="card-img-top" (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">
-                <a style="color: white" > {{sushirolls.name}} </a>
-            </h5>  
-            <h6>{{sushirolls.price}} $</h6>
-           </div>
+<div class="home" *ngIf="authenticate()">
+  <div class="menu-home">
+    <div class="row">
+      <div class="col-4 ">
+          <div class="form-group searchbar">
+              <input type="text" class="form-control" placeholder="Search" 
+              style="width:300px" [(ngModel)]="searchTerm" />
+          </div>
       </div>
-
-        <!-- Este es el modal -->
-
-        <ng-template #template>
-            <div class="modal-header ">
-                <h4 class="modal-title mx-auto">{{sushirolls.name}}</h4>   
-            </div>
-          
-            <div class="row m-3">
-              <div class="col-8">
-                  <div class="mx-auto sushi-modal" style="max-width: 18rem;">
-                      <img  src="{{sushirolls.image}}" >
-                  </div>
-                  <div class="mt-2 text-center">
-                    <p>
-                      {{sushirolls.description}}
-                    </p>
-                  </div>
-              </div>
-              <div class="col-4">
-
-                <h5>Beverage</h5>
-
-                  <div class="input-group mb-3">
-                      <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="beverage">
-                        <option selected>None</option>
-                        <option>Coca-Cola</option>
-                        <option>Sprite</option>
-                        <option>Orange Soda</option>
-                      </select>
-                    </div>
-
-              <h5>Appetizer</h5>
-
-                  <div class="input-group mb-3">
-                      <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="appetizer">
-                        <option selected>None</option>
-                        <option>Ramen</option>
-                        <option>Soup</option>
-                        <option>Gyosa's (3)</option>
-                        <option>Rice</option>
-                        <option>Shrimp (2)</option>
-                        <option>Nigiri (3)</option>
-                      </select>
-                    </div>
-                
-                <div style="margin-left: 2 0px; "><button type="button" class="btn" (click)="selectedSushi(sushirolls)">Order</button></div>
-        
-                  
-              </div>
-          </div>
-          <div class="modal-footer" style="background-color: rgb(255, 123, 0)">
-            
-          </div>
-        </ng-template>
-
-        <!-- Aqui termina el modal -->
-
+    </div>
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <h1 class="pl-5 mt-5 titulo-menu p-2 text-center">Menú</h1>
+      </div>
+    </div>
   </div>
-
   
+    <!-- Cards -->  
+  
+  <!-- Estas son las diferentes'cartas del menu' -->
+  <!-- Aqui esta en ngFor que imprime todas las cartas de la base de datos de sushirolls-->
+  
+  
+  <div class="row my-5" >
+    
+    <div class="col-4 mb-5" *ngFor="let sushirolls of sushirolls | sushirollFilter:searchTerm"> 
+        <div class="card mx-auto" style="width: 18rem;">
+            <img class="card-img-top" (click)="openModal(template)" src="{{sushirolls.image}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">
+                  <a style="color: white" > {{sushirolls.name}} </a>
+              </h5>  
+              <h6>{{sushirolls.price}} $</h6>
+             </div>
+        </div>
+  
+          <!-- Este es el modal -->
+  
+          <ng-template #template>
+              <div class="modal-header ">
+                  <h4 class="modal-title mx-auto">{{sushirolls.name}}</h4>   
+              </div>
+            
+              <div class="row m-3">
+                <div class="col-8">
+                    <div class="mx-auto sushi-modal" style="max-width: 18rem;">
+                        <img  src="{{sushirolls.image}}" >
+                    </div>
+                    <div class="mt-2 text-center">
+                      <p>
+                        {{sushirolls.description}}
+                      </p>
+                    </div>
+                </div>
+                <div class="col-4">
+  
+                  <h5>Beverage</h5>
+  
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="beverage">
+                          <option selected>None</option>
+                          <option>Coca-Cola</option>
+                          <option>Sprite</option>
+                          <option>Orange Soda</option>
+                        </select>
+                      </div>
+  
+                <h5>Appetizer</h5>
+  
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="appetizer">
+                          <option selected>None</option>
+                          <option>Ramen</option>
+                          <option>Soup</option>
+                          <option>Gyosa's (3)</option>
+                          <option>Rice</option>
+                          <option>Shrimp (2)</option>
+                          <option>Nigiri (3)</option>
+                        </select>
+                      </div>
+                  
+                  <div style="margin-left: 2 0px; "><button type="button" class="btn" (click)="selectedSushi(sushirolls)">Order</button></div>
+          
+                    
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: rgb(255, 123, 0)">
+              
+            </div>
+          </ng-template>
+  
+          <!-- Aqui termina el modal -->
+  
+    </div>
+  
+    
+  </div>
 </div>
+    
 
 
 
