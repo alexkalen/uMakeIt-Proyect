@@ -35,12 +35,14 @@ export class CartService {
     }));
   }
 
-  getOrders() {
+  getOrders(uid) {
+    this.orders = this.afs.collection('orders', ref => ref.where('user', '==', uid)).valueChanges();
     return this.orders;
   }
 
   addOrder(order: Order) {
     this.db.collection("orders").doc().set({
+      user: localStorage.getItem('uid'),
       main: order.main,
       appetizer: order.appetizer,
       beverage: order.beverage,

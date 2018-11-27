@@ -76,7 +76,7 @@ export class OrdenComponent implements OnInit, AfterViewChecked{
   }
 
   ngOnInit() {
-    this.cartService.getOrders().subscribe(orders => {
+    this.cartService.getOrders(localStorage.getItem('uid')).subscribe(orders => {
       this.orders = orders;
       console.log(this.orders);
     });

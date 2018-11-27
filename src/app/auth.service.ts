@@ -15,11 +15,22 @@ export class AuthService {
     localStorage.setItem('isAuthenticated', 'true');
     this.router.navigate(['/home']);
     console.log('The user is logged in.');
+
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        localStorage.setItem('uid', user.uid);
+      } else {
+        // No user is signed in.
+      }
+    });
   }
 
   logOut() {
     this.afAuth.auth.signOut();
     localStorage.setItem('isAuthenticated', 'false');
+    localStorage.removeItem('uid')
     this.router.navigate(['']);
     console.log('The user has logged out.');
   }
