@@ -56,9 +56,5 @@ insertItem(item: Item){
   });
 }
 
-//Eliminar item de la lista
-deleteItem($key: string){
-  this.itemsCollection.remove($key);
-}*/
 
 }
