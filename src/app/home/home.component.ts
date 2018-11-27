@@ -5,12 +5,6 @@ import { Item } from '../models/item';
 import { CartService } from '../cart.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 
-
-
-// ¿Que esta pasando aqui?
-// Estamos inyectando un servicio para poder iterar nuestros diferentes 'sushirolls'
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
