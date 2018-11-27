@@ -1,6 +1,6 @@
 .menu{
     min-height: 100vh;
-    background: url(/images/BackGround-Sushito.jpg) no-repeat center center;
+    background: url(../../assets/BackGround-Sushito.jpg) no-repeat center center;
     background-size: cover;
 }
 

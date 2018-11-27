@@ -12,8 +12,10 @@ import { Item } from '../../models/item';
 export class ItemListComponent implements OnInit {
 
   itemList: Item[];
+  items;
+  searchTerm;
 
-  constructor(private itemService: ItemService) { }
+  constructor(public itemService: ItemService) { }
 
   ngOnInit() {
    /* this.itemService.getItem()

@@ -12,7 +12,7 @@ import { ItemService } from '../../item.service';
 })
 export class ItemComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
+  constructor(public itemService: ItemService) { }
 
   ngOnInit() {
   this.itemService.getItem();
